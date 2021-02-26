@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-12 text-center">
+			<h1>Edit <%= place.name %></h1>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-lg-4">
+			<form action="/places/<%= place._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+				<div class="form-group">
+					<input class="form-control" type="text" name="name" value="<%= place.name %>">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="number" name="cost" value="<%= place.cost %>" step="0.01" min="0">
+				</div>
+				<div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="description" value="<%= place.description %>">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit!</button>	
+				</div>
+			</form>
+			<a href="/places">Go Back</a>
+		</div>
+	</div>
+</div>
+<% include ../partials/footer %>

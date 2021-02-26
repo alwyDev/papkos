@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			
+			<div class="card mb-3">
+			  <img src="<%= place.image %>" class="card-img-top" alt="<%= place.name %>">
+			  <div class="card-body">
+				<p class="float-right">Rp<%= place.cost %>/month</p>
+				<h5 class="card-title"><%= place.name %></h5>
+				  <p>
+					<em>Submitted by: <a href="/users/<%= place.author.id %>"><%= place.author.username %></a>, <%= moment(place.createdAt).fromNow() %></em>
+				  </p>
+				  <hr>
+				<p class="card-text"><%= place.description %></p>
+					<% if(currentUser && place.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+						<a class="btn btn-sm btn-warning" href="/places/<%= place._id %>/edit">Edit</a>
+						<form class="delete-form" action="/places/<%= place._id %>?_method=DELETE" method="POST">
+							<button class="btn btn-sm btn-danger">Delete</button>
+						</form>
+					<% }%>
+			  </div>
+			</div>
+			
+			<div class="card">
+				<div class="card-body">
+				<div class="text-right">
+					<a class="btn btn-success" href="/places/<%= place._id %>/comments/new">Add New Comment</a>
+				</div>
+				<hr>
+				<div class="row">
+				<% place.comments.forEach(function(comment){ %>
+					<div class="col-md-12 mt-2">
+						<div class="card">
+							<div class="card-body">
+								<div class="float-left">
+									<p class="card-title"><%= comment.author.username %></p>
+									<p class="card-text"><%= comment.text %></p>
+								</div>
+								<div class="float-right">
+									<p><%= moment(comment.createdAt).fromNow() %></p>
+									
+									<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+									<div class="float-right">
+										<a class="btn btn-sm btn-warning" href="/places/<%=place._id %>/comments/<%=comment._id %>/edit">Edit</a>
+										<form class="delete-form" action="/places/<%=place._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+											<button class="btn btn-sm btn-danger">Delete</button>
+										</form>
+									</div>
+									<% } %>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% }) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>

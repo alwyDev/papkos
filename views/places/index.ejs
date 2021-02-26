@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welcome to PapiKos</h1>
+			<p>Cari kos yang aman dan nyaman? PapiKos aja.</p>
+			<p>
+				<a class="btn btn-primary btn-large" href="/places/new">Add New Place</a>
+			</p>
+			<p>
+			   <form action="/places" method="GET" class="form-inline">
+				   <div class="form-group">
+					   <input type="text" name="search" placeholder="Kos search..." class="form-control">
+					   <input type="submit" value="Search" class="btn btn-default">
+				   </div>
+			   </form>
+		   </p>
+		</div>
+	</header>
+
+	<div class="row text-center" id="place-grid">
+		<div class="col-md-12">
+			<% if(noMatch !== null) { %>
+				<h3><%= noMatch %></h3>
+				<p>
+					<form action="/places" method="GET" class="form-inline">
+						<div class="form-group">
+							<input type="text" name="search" placeholder="Kosan search..." class="form-control">
+							<input type="submit" value="Search" class="btn btn-default">
+						</div>
+					</form>
+				</p>
+             <% } %>
+		</div>
+		<% places.forEach(function(place){ %>
+			<div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+				<div class="card">
+				  <img src="<%= place.image %>" class="card-img-top" alt="<%= place.name %>">
+				  <div class="card-body">
+					<h5 class="card-title"><%= place.name %></h5>
+					<a href="/places/<%= place._id %>" class="btn btn-primary">More Info</a>
+				  </div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,17 @@
+<% include ../partials/header %>
+
+	<div class="row justify-content-center">
+		<h1 class="col-md-12 text-center">Add New Comment to <%= place.name %></h1>
+		<div class="col-xs-12 col-sm-6 col-lg-4">
+			<form action="/places/<%= place._id %>/comments" method="POST">
+				<div class="form-group">
+					<input class="form-control" type="text" name="comment[text]" placeholder="comment">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit!</button>	
+				</div>
+			</form>
+			<a href="/places">Go Back</a>
+		</div>
+	</div>
+<% include ../partials/footer %>
