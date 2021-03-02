@@ -29,13 +29,40 @@
 }
 
 .thumbnail img {
-	width: 100%;
+  width: 100%;
 }
 
 .thumbnail {
-	padding: 0;
+  padding: 0;
 }
 
 .delete-form {
-	display: inline;
+  display: inline;
+}
+
+#login-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#signup-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.image-home {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.jumbotron-container {
+  display: flex;
+  background-color: white;
+  /* border: 2px solid rgb(116, 116, 116); */
 }

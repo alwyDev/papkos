@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
 <div class="container">
-	<header class="jumbotron">
+	<header class="jumbotron jumbotron-container">
 		<div class="container">
 			<h1>Welcome to PapiKos</h1>
 			<p>Cari kos yang aman dan nyaman? PapiKos aja.</p>
@@ -11,11 +11,14 @@
 			<p>
 			   <form action="/places" method="GET" class="form-inline">
 				   <div class="form-group">
-					   <input type="text" name="search" placeholder="Kos search..." class="form-control">
-					   <input type="submit" value="Search" class="btn btn-default">
+					   <input type="text" name="search" placeholder="Cari Kosan..." class="form-control">
+					   <input type="submit" value="Search" class="btn btn-link">
 				   </div>
 			   </form>
 		   </p>
+		</div>
+		<div >
+			<img class="image-home" src="https://i.ibb.co/QFZJyx5/undraw-Traveling-re-weve.png" alt="undraw-Traveling-re-weve" border="0">
 		</div>
 	</header>
 
