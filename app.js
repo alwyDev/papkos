@@ -57,10 +57,10 @@ app.use("/", indexRoutes);
 app.use("/places", placeRoutes);
 app.use("/places/:id/comments", commentRoutes);
 
-app.listen(3000, () => {
-  console.log("Server Has Started!");
-});
-
-// app.listen(process.env.PORT, process.env.IP, function () {
-//   console.log("The Rebahand Server Has Started!");
+// app.listen(3000, () => {
+// 	console.log('Server Has Started!');
 // });
+
+app.listen(process.env.PORT, process.env.IP, function () {
+  console.log("The Rebahand Server Has Started!");
+});
